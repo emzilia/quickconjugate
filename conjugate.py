@@ -11,10 +11,12 @@ def return_html(verb):
     }
 
     url = (
-            "https://conjugator.reverso.net/conjugation-spanish-verb-"
-                f"{verb}.html"
+        "https://conjugator.reverso.net/conjugation-spanish-verb-"
+            f"{verb}.html"
     )
 
+    # gets page and lets us know if access is forbidden, or if it just 
+    # didn't work
     page = requests.get(url, headers=headers)
     if page.status_code == 403:
         print("Error: status forbidden")
@@ -28,6 +30,7 @@ def return_html(verb):
     return tree
 
 def scrape_html(tree):
+    # inelegant method of locating text on page
     presente = [ 
         tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[2]/div/ul/li[1]/i[2]"),
@@ -77,6 +80,8 @@ def scrape_html(tree):
     futuro_text = []
     preterito_text = []
 
+    # all list items are converted to strings within the appropriate group,
+    # which is then returned as a single list
     for verbs in presente:
         stringify_elements(verbs, presente_text)
 
@@ -92,13 +97,15 @@ def scrape_html(tree):
 
     return full_text
 
-# takes individual list elements and appends the strings to the provided list
+# takes individual list elements and appends the strings within to
+# the provided list
 def stringify_elements(element, lista) -> None:
     for resultado in element:
         text = resultado.text
         if text is not None:
             lista.append(text)
 
+# prints all the text in labelled columns
 def print_text(full_text) -> None:
     print(f"PRESENTE".ljust(15) + f"FUTURO".ljust(15) + f"PRETÉRITO (imp)")
 
