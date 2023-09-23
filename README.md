@@ -1,5 +1,6 @@
 # quickconjugate
-conjugate Spanish verbs in the command line with web scraping
+conjugate Spanish verbs in the command line with web scraping, requests are made to:    
+<https://conjugator.reverso.net>
 
 ### to install
 First, read the ```install.sh``` file to see what it's doing to your system.   
