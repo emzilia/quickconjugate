@@ -10,6 +10,8 @@ def return_html(verb):
         "Chrome/58.0.3029.110 Safari/537.36"
     }
 
+    # the website to be scraped from, changing this would require changing
+    # the hard-coded xpaths below
     url = (
         "https://conjugator.reverso.net/conjugation-spanish-verb-"
             f"{verb}.html"
@@ -18,12 +20,18 @@ def return_html(verb):
     # gets page and lets us know if access is forbidden, or if it just 
     # didn't work
     page = requests.get(url, headers=headers)
-    if page.status_code == 403:
-        print("Error: status forbidden")
-        sys.exit(1)
-    elif page.status_code != 200:
-        print("Error: could not connect")
-        sys.exit(1)
+    match page.status_code:
+        case 200:
+            pass
+        case 403:
+            print("Error: status forbidden")
+            sys.exit(1)
+        case 404:
+            print("Error: page not found")
+            sys.exit(1)
+        case _:
+            print("Error: unable to connect")
+            sys.exit(1)
 
     html_tree = html.fromstring(page.content)
 
@@ -128,13 +136,13 @@ def stringify_elements(element, lista) -> None:
 
 # prints all the text in labelled columns
 def print_text(full_text) -> None:
-    print(f"PRESENTE".ljust(15) + f"FUTURO".ljust(15) +
-            f"PRETÉRITO (imp)".ljust(15) + f"PRETÉRITO (per)")
+    print(f"PRESENTE".ljust(16) + f"FUTURO".ljust(16) +
+            f"PRETÉRITO (imp)".ljust(16) + f"PRETÉRITO (per)")
 
     i: int = 0
     while i < 6:
-        print(f"{full_text[0][i]}".ljust(15) + f"{full_text[1][i]}".ljust(15)
-              + f"{full_text[2][i]}".ljust(15) + f"{full_text[3][i]}")
+        print(f"{full_text[0][i]}".ljust(16) + f"{full_text[1][i]}".ljust(16)
+              + f"{full_text[2][i]}".ljust(16) + f"{full_text[3][i]}")
         i += 1
 
 # only accepts one argument
