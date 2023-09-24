@@ -61,7 +61,7 @@ def scrape_html(tree):
                     "div[1]/div[4]/div/div/div[1]/div[3]/div/ul/li[6]/i[2]"),
     ]
 
-    preterito = [
+    preteritoimperf = [
         tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[4]/div/ul/li[1]/i[2]"),
         tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
@@ -76,9 +76,26 @@ def scrape_html(tree):
                     "/div[1]/div[4]/div/div/div[1]/div[4]/div/ul/li[6]/i[2]"),
     ]
 
+    preteritoperf = [
+        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+                    "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[1]/i[2]"),
+        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+                    "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[2]/i[2]"),
+        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+                    "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[3]/i[2]"),
+        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+                    "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[4]/i[2]"),
+        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+                    "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[5]/i[2]"),
+        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+                    "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[6]/i[2]"),
+
+    ]
+
     presente_text = []
     futuro_text = []
-    preterito_text = []
+    preteritoimperf_text = []
+    preteritoperf_text = []
 
     # all list items are converted to strings within the appropriate group,
     # which is then returned as a single list
@@ -88,11 +105,15 @@ def scrape_html(tree):
     for verbs in futuro:
         stringify_elements(verbs, futuro_text)
 
-    for verbs in preterito:
-        stringify_elements(verbs, preterito_text)
+    for verbs in preteritoimperf:
+        stringify_elements(verbs, preteritoimperf_text)
+
+    for verbs in preteritoperf:
+        stringify_elements(verbs, preteritoperf_text)
 
     full_text = [ 
-                 presente_text, futuro_text, preterito_text 
+                 presente_text, futuro_text,
+                 preteritoimperf_text, preteritoperf_text 
     ]
 
     return full_text
@@ -107,12 +128,12 @@ def stringify_elements(element, lista) -> None:
 
 # prints all the text in labelled columns
 def print_text(full_text) -> None:
-    print(f"PRESENTE".ljust(15) + f"FUTURO".ljust(15) + f"PRETÉRITO (imp)")
+    print(f"PRESENTE".ljust(15) + f"FUTURO".ljust(15) + f"PRETÉRITO (imp)".ljust(15) + f"PRETÉRITO (per)")
 
     i: int = 0
     while i < 6:
         print(f"{full_text[0][i]}".ljust(15) + f"{full_text[1][i]}".ljust(15)
-              + f"{full_text[2][i]}")
+              + f"{full_text[2][i]}".ljust(15) + f"{full_text[3][i]}")
         i += 1
 
 if __name__ == "__main__":
