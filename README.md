@@ -4,7 +4,7 @@ conjugate Spanish verbs in the command line with web scraping, requests are made
 
 ### to install
 First, read the ```install.sh``` file to see what it's doing to your system.   
-Then, run the file with ```bash install.sh```    
+Then, run the file with ```bash install.sh``` from within the same directory.    
 The ```install.sh``` can be run a second time to remove the file from your ```$HOME/.local/bin```
 
 ### to use
