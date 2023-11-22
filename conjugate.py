@@ -28,13 +28,13 @@ def scrape_html(verb):
         case 200:
             pass
         case 403:
-            print("Error: status forbidden")
+            print("Error: Status forbidden")
             sys.exit(1)
         case 404:
-            print("Error: page not found")
+            print("Error: Page not found")
             sys.exit(1)
         case _:
-            print("Error: unable to connect")
+            print("Error: Unable to connect")
             sys.exit(1)
 
     html_tree = html.fromstring(page.content)
