@@ -19,6 +19,7 @@ except ImportError:
     sys.exit(1)
 
 app = flask.Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 def scrape_html(verb):
     headers = {
@@ -157,7 +158,7 @@ def conjugate():
 
     html_tree = scrape_html(verb)
     if html_tree in (400, 403, 404):
-        return flask.jsonify({"error": "verb not found in query string"}), 400
+        return flask.jsonify({"error": "connection to website failed"}), 400
 
     full_text = parse_html(html_tree)
 
@@ -167,4 +168,4 @@ def conjugate():
         return flask.jsonify({f"{verb}": f"{full_text}"}), 200
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0',debug=True)
