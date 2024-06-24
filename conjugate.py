@@ -26,8 +26,8 @@ def scrape_html(verb):
     # didn't work
     page = Request(url=url, headers=headers, method="GET")
     with urlopen(page) as f:
+        # gets page data as bytearray
         coded_text = f.read()
-        pass
     match f.status:
         case 200:
             pass
@@ -41,7 +41,9 @@ def scrape_html(verb):
             print("Error: Unable to connect")
             sys.exit(1)
 
+    # converting bytearray data to string
     decoded_text = coded_text.decode("utf8")
+    # converting string to html
     html_tree = html.fromstring(decoded_text)
 
     return html_tree
