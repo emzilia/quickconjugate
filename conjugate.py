@@ -5,7 +5,7 @@ from urllib.request import Request, urlopen
 try:
     from lxml import html
 except ImportError:
-    print("Error: Script requires pip packages that are missing: html")
+    print("Error: Script requires pip packages that are missing: lxml")
     sys.exit(1)
 
 def scrape_html(verb):
