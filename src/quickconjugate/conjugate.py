@@ -160,7 +160,10 @@ class Conjugate():
     def process_args(self):
         # only accepts one argument
         if len(sys.argv) == 1:
-            print("Usage: conj <verb>\n\tReturns list of common conjugations.")
+            print("Usage: conj <verb>\n\tReturns a list of common conjugations.")
+            sys.exit(1)
+        if sys.argv[1] == "-h" or sys.argv[1] == "--help":
+            print("Usage: conj <verb>\n\tReturns a list of common conjugations.")
             sys.exit(1)
         elif len(sys.argv) > 2:
             print("Error: only one input is allowed at a time")
