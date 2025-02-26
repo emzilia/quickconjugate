@@ -3,7 +3,7 @@ Conjugate Spanish verbs in the command line with web scraping, requests are made
 <https://conjugator.reverso.net>
 
 ### to install
-The recommended installation method is via [pipx][https://github.com/pypa/pipx], which greatly improves the UX of installing and managing python CLI apps; it can be found in the repos of most major distributions. After it's been installed, you can install quickconjugate by executing this command within your terminal:   
+The recommended installation method is via [pipx](https://github.com/pypa/pipx), which greatly improves the UX of installing and managing python CLI apps; it can be found in the repos of most major distributions. After it's been installed, you can install quickconjugate by executing this command within your terminal:   
 ```pipx install git+https://github.com/emzilia/quickconjugate.git```
 
 ### to use
