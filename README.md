@@ -1,16 +1,10 @@
 # quickconjugate
-conjugate Spanish verbs in the command line with web scraping, requests are made to:    
+Conjugate Spanish verbs in the command line with web scraping, requests are made to:    
 <https://conjugator.reverso.net>
 
-### dependencies via pip    
-lxml    
-requests    
-```pip install -r requirements.txt```
-
 ### to install
-First, read the ```install.sh``` file to see what it's doing to your system.   
-Then, run the file with ```bash install.sh``` from within the same directory.    
-The ```install.sh``` can be run a second time to remove the file from your ```$HOME/.local/bin```
+The recommended installation method is via ```pipx```, which greatly improves the UX of installing and managing python CLI apps; it can be found in the repos of most major distributions. After it's been installed, you can install quicktranslate by executing this command within your terminal:
+```pipx install git+https://github.com/emzilia/quickconjugate.git```
 
 ### to use
 Type the command followed by a Spanish verb.
