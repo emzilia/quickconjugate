@@ -5,6 +5,7 @@ conjugate Spanish verbs in the command line with web scraping, requests are made
 ### dependencies via pip    
 lxml    
 requests    
+```pip install -r requirements.txt```
 
 ### to install
 First, read the ```install.sh``` file to see what it's doing to your system.   
