@@ -1,10 +1,15 @@
 #!/usr/bin/env python
 
+import sys
 try:
     from lxml import html
-    import requests, sys
 except ImportError:
-    print("Error: Script requires pip packages that are missing: html, requests")
+    print("Error: Script requires pip packages that are missing: html")
+    sys.exit(1)
+try:
+    import requests
+except ImportError:
+    print("Error: Script requires pip packages that are missing: requests")
     sys.exit(1)
 
 def scrape_html(verb):
