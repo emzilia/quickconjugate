@@ -25,69 +25,69 @@ def return_html(verb):
         print("Error: could not connect")
         sys.exit(1)
 
-    tree = html.fromstring(page.content)
+    html_tree = html.fromstring(page.content)
 
-    return tree
+    return html_tree
 
-def scrape_html(tree):
+def scrape_html(html_tree):
     # inelegant method of locating text on page
     presente = [ 
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[2]/div/ul/li[1]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[2]/div/ul/li[2]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[2]/div/ul/li[3]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[2]/div/ul/li[4]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[2]/div/ul/li[5]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[2]/div/ul/li[6]/i[2]"),
     ]
 
     futuro = [
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[3]/div/ul/li[1]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[3]/div/ul/li[2]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div"
                     "/div[1]/div[4]/div/div/div[1]/div[3]/div/ul/li[3]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div"
                     "/div[1]/div[4]/div/div/div[1]/div[3]/div/ul/li[4]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[3]/div/ul/li[5]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[3]/div/ul/li[6]/i[2]"),
     ]
 
     preteritoimperf = [
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[4]/div/ul/li[1]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[4]/div/ul/li[2]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[1]/div[4]/div/ul/li[3]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div"
                     "/div[1]/div[4]/div/div/div[1]/div[4]/div/ul/li[4]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div"
                     "/div[1]/div[4]/div/div/div[1]/div[4]/div/ul/li[5]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div"
                     "/div[1]/div[4]/div/div/div[1]/div[4]/div/ul/li[6]/i[2]"),
     ]
 
     preteritoperf = [
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[1]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[2]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[3]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[4]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[5]/i[2]"),
-        tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
+        html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
                     "div[1]/div[4]/div/div/div[4]/div[1]/div/ul/li[6]/i[2]"),
 
     ]
@@ -112,8 +112,8 @@ def scrape_html(tree):
         stringify_elements(verbs, preteritoperf_text)
 
     full_text = [ 
-                 presente_text, futuro_text,
-                 preteritoimperf_text, preteritoperf_text 
+        presente_text, futuro_text,
+        preteritoimperf_text, preteritoperf_text 
     ]
 
     return full_text
@@ -128,7 +128,8 @@ def stringify_elements(element, lista) -> None:
 
 # prints all the text in labelled columns
 def print_text(full_text) -> None:
-    print(f"PRESENTE".ljust(15) + f"FUTURO".ljust(15) + f"PRETÉRITO (imp)".ljust(15) + f"PRETÉRITO (per)")
+    print(f"PRESENTE".ljust(15) + f"FUTURO".ljust(15) +
+            f"PRETÉRITO (imp)".ljust(15) + f"PRETÉRITO (per)")
 
     i: int = 0
     while i < 6:
@@ -136,18 +137,19 @@ def print_text(full_text) -> None:
               + f"{full_text[2][i]}".ljust(15) + f"{full_text[3][i]}")
         i += 1
 
+# only accepts one argument
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         print("Usage: conj <verb>\n\tReturns list of common conjugations.")
         sys.exit(1)
     elif len(sys.argv) > 2:
-        print("Error: one verb at a time")
+        print("Error: only one input is allowed at a time")
         sys.exit(1)
 
     verb: str = sys.argv[1]
 
-    tree = return_html(verb)
+    html_tree = return_html(verb)
 
-    full_text = scrape_html(tree)
+    full_text = scrape_html(html_tree)
 
     print_text(full_text)
