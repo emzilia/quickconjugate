@@ -11,7 +11,7 @@ The ```install.sh``` can be run a second time to remove the file from your ```$H
 Type the command followed by a Spanish verb.
 
 example input:    
-```conj aprender                 prints the present, future, and imperfect preterite tenses.```
+```conj aprender```    
 output:
 ```
 PRESENTE        FUTURO          PRETÉRITO (imp) PRETÉRITO (per)
