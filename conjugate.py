@@ -1,15 +1,11 @@
 #!/usr/bin/env python
 
 import sys
+from urllib.request import Request, urlopen
 try:
     from lxml import html
 except ImportError:
     print("Error: Script requires pip packages that are missing: html")
-    sys.exit(1)
-try:
-    import requests
-except ImportError:
-    print("Error: Script requires pip packages that are missing: requests")
     sys.exit(1)
 
 def scrape_html(verb):
@@ -28,8 +24,11 @@ def scrape_html(verb):
 
     # gets page and lets us know if access is forbidden, or if it just 
     # didn't work
-    page = requests.get(url, headers=headers)
-    match page.status_code:
+    page = Request(url=url, headers=headers, method="GET")
+    with urlopen(page) as f:
+        coded_text = f.read()
+        pass
+    match f.status:
         case 200:
             pass
         case 403:
@@ -42,7 +41,8 @@ def scrape_html(verb):
             print("Error: Unable to connect")
             sys.exit(1)
 
-    html_tree = html.fromstring(page.content)
+    decoded_text = coded_text.decode("utf8")
+    html_tree = html.fromstring(decoded_text)
 
     return html_tree
 
