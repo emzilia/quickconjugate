@@ -3,7 +3,7 @@
 from lxml import html
 import requests, sys
 
-def return_html(verb):
+def scrape_html(verb):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -37,7 +37,7 @@ def return_html(verb):
 
     return html_tree
 
-def scrape_html(html_tree):
+def parse_html(html_tree):
     # inelegant method of locating text on page
     presente = [ 
         html_tree.xpath("/html/body/div[1]/div[1]/div/div[1]/div/form/div[3]/div/"
@@ -156,8 +156,8 @@ if __name__ == "__main__":
 
     verb: str = sys.argv[1]
 
-    html_tree = return_html(verb)
+    html_tree = scrape_html(verb)
 
-    full_text = scrape_html(html_tree)
+    full_text = parse_html(html_tree)
 
     print_text(full_text)
